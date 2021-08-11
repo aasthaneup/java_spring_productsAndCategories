@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.container{
+	color: red;
+}
+.header{
+	height:100px;
+	background-color:gray;
+}
+
+.content{
+	display:flex;
+	justify-content: space-around;
+}
+
+.leftcontent, .rightcontent{
+	width:35%;
+	background-color:aqua;
+}
