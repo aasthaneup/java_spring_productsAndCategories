@@ -7,6 +7,5 @@ import com.assignment.productscategories.models.CategoryProduct;
 
 @Repository
 public interface CategoryProductRepository extends CrudRepository<CategoryProduct, Long> {
-
 	CategoryProduct save(CategoryProduct cp);
 }

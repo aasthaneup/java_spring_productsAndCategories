@@ -22,7 +22,6 @@ import com.assignment.productscategories.services.ProductService;
 
 @Controller
 public class MainController {
-
 	private final ProductService productServ;
 	private final CategoryService categoryServ;
 
@@ -30,17 +29,15 @@ public class MainController {
 		this.categoryServ = categoryServ;
 		this.productServ = productServ;
 	}
-
+	
 	//	get request: create new product page
 	//	-------------------------------------
-
 	@RequestMapping("/products/new")
 	public String newProduct(Model model) {
 		model.addAttribute("product", new Product());
 		return "newproduct.jsp";
 	}
-
-
+	
 	//	post request: create new product route
 	//	---------------------------------------
 	@RequestMapping(value="/products/new", method=RequestMethod.POST)
@@ -53,16 +50,13 @@ public class MainController {
 		}
 	}
 
-
 	//	get request: create new category page
 	//	--------------------------------------
-
 	@RequestMapping("/categories/new")
 	public String newCategory(Model model) {
 		model.addAttribute("category", new Category());
 		return "newcategory.jsp";
 	}
-
 
 	//	post request: create new category route
 	//	----------------------------------------
@@ -75,7 +69,6 @@ public class MainController {
 			return "redirect:/categories/new";
 		}
 	}
-
 
 	//	get request: show product page
 	//	--------------------------------------

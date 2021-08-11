@@ -10,12 +10,8 @@ import com.assignment.productscategories.models.Product;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long>{
-
 	List<Product> findAll();
-	
 	Optional<Product> findById(Long id);
-	
 	Product save(Product p);
-	
 	void deleteById(Long id);
 }

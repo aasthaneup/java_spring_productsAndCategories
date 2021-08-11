@@ -11,10 +11,7 @@ import com.assignment.productscategories.models.Category;
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Long>{
 	List<Category> findAll();
-
 	Optional<Category> findById(Long id);
-
 	Category save(Category c);
-
 	void deleteById(Long id);
 }

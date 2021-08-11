@@ -11,15 +11,12 @@ import com.assignment.productscategories.repositories.CategoryRepository;
 @Service
 public class CategoryService {
 	private final CategoryRepository categoryRepo;
-	
 	public CategoryService(CategoryRepository categoryRepo) {
 		this.categoryRepo = categoryRepo;
 	}
-	
 	public List<Category> allCategories(){
 		return categoryRepo.findAll();
 	}
-	
 	public Category findCategory(Long id) {
 		Optional<Category> optCat = categoryRepo.findById(id);
 		if(optCat.isPresent()) {
@@ -28,13 +25,10 @@ public class CategoryService {
 			return null;
 		}
 	}
-	
 	public Category saveCategory(Category category) {
 		return categoryRepo.save(category);
 	}
-	
 	public void deleteCategory(Long id) {
 		categoryRepo.deleteById(id);
 	}
-	
 }
