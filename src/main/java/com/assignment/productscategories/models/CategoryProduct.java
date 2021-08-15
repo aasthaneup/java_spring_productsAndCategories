@@ -22,11 +22,9 @@ public class CategoryProduct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yy-MM-dd")
 	private Date createdAt;
-
 	@DateTimeFormat(pattern="yy-MM-dd")
 	private Date updatedAt;
 	//    many to one relationship between products and categories and vice versa
@@ -46,7 +44,6 @@ public class CategoryProduct {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-
 	//	constructors
 	public CategoryProduct() {
 	}

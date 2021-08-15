@@ -24,40 +24,40 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="products")
 public class Product {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	@NotNull
 	@Size(min = 2, max=255)
-    private String name;
+	private String name;
 	@NotNull
 	@Size(min = 5)
-    private String description;
+	private String description;
 	@NotNull
-    private double price;
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yy-MM-dd")
-    private Date createdAt;
-    @DateTimeFormat(pattern="yy-MM-dd")
-    private Date updatedAt;
-//ManyToMany to many relationship between products and categories
+	private double price;
+	@Column(updatable=false)
+	@DateTimeFormat(pattern="yy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern="yy-MM-dd")
+	private Date updatedAt;
+	//ManyToMany to many relationship between products and categories
 	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "categories_products", 
-        joinColumns = @JoinColumn(name = "product_id"), 
-        inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    private List<Category> categories;
-//    constructors
-    public Product() {   
-    }
-    public Product(String name, String description,
-    		double price) {
-    	super();
-    	this.name = name;
-    	this.description = description;
-    	this.price = price;
-    }
-//    prePersist and preUpdate methods
+	@JoinTable(
+			name = "categories_products", 
+			joinColumns = @JoinColumn(name = "product_id"), 
+			inverseJoinColumns = @JoinColumn(name = "category_id")
+			)
+	private List<Category> categories;
+	//    constructors
+	public Product() {   
+	}
+	public Product(String name, String description,
+			double price) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+	}
+	//    prePersist and preUpdate methods
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();
@@ -66,7 +66,7 @@ public class Product {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-//	getters and setters
+	//	getters and setters
 	public Long getId() {
 		return id;
 	}

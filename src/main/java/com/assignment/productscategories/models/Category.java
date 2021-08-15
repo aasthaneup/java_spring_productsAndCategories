@@ -49,7 +49,7 @@ public class Category {
 	public Category(String name) {
 		this.name = name;
 	}
-	//	prepersist and preupdate methods
+	//	prePersist and preUpdate methods
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();
