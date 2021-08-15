@@ -29,7 +29,7 @@ public class MainController {
 		this.categoryServ = categoryServ;
 		this.productServ = productServ;
 	}
-	
+
 	//	get request: create new product page
 	//	-------------------------------------
 	@RequestMapping("/products/new")
@@ -37,7 +37,7 @@ public class MainController {
 		model.addAttribute("product", new Product());
 		return "newproduct.jsp";
 	}
-	
+
 	//	post request: create new product route
 	//	---------------------------------------
 	@RequestMapping(value="/products/new", method=RequestMethod.POST)
@@ -74,15 +74,15 @@ public class MainController {
 	//	--------------------------------------
 	@RequestMapping("/products/{id}")
 	public String showProduct(@PathVariable("id") long id, Model model) {
-		
-//		***was testing for future implementation of certain features***
-//		if(productServ.allProducts().contains(productServ.findProduct(id))) {
-//			System.out.println("The product exists");
-//		}
-//		else {
-//			System.out.println("The product does not exist!");
-//		}
-		
+
+		//		***was testing for future implementation of certain features***
+		//		if(productServ.allProducts().contains(productServ.findProduct(id))) {
+		//			System.out.println("The product exists");
+		//		}
+		//		else {
+		//			System.out.println("The product does not exist!");
+		//		}
+
 		List<Category> allCat = categoryServ.allCategories();
 		List<Category> prodCategories = productServ.findProduct(id).getCategories();
 		List<Category> remCategories = new ArrayList<Category>();
@@ -100,7 +100,6 @@ public class MainController {
 		return "showproduct.jsp";
 	}
 
-
 	//	post request: join product to category route
 	//	----------------------------------------
 	@RequestMapping(value="/products/{id}/addcategory", method=RequestMethod.POST)
@@ -114,7 +113,6 @@ public class MainController {
 
 		return "redirect:/products/"+product_id;
 	}
-
 
 	//	get request: show category page
 	//	--------------------------------------
@@ -137,7 +135,6 @@ public class MainController {
 		return "showcategory.jsp";
 	}
 
-
 	//	post request: join category to product route
 	//	----------------------------------------
 	@RequestMapping(value="/categories/{id}/addproduct", method=RequestMethod.POST)
@@ -150,8 +147,5 @@ public class MainController {
 		productServ.saveRelationship(cp);
 
 		return "redirect:/categories/"+category_id;
-	}	
-
-
-
+	}
 }
